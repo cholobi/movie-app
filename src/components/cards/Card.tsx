@@ -25,7 +25,7 @@ const Card: FC<CardProps> = ({
   return (
     <>
       {id ? (
-        <Link to={`details/${id}`} className='flex flex-col' id={id}>
+        <Link to={`/details/${id}`} className='flex flex-col' id={id}>
           <div className='mt-6 border-none rounded-md transition-all relative'>
             <figure className={`${figClass}`}>
               <img

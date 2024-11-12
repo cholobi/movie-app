@@ -9,6 +9,8 @@ import Dashboard from "../pages/Dashboard";
 import { useSelector } from "react-redux";
 import { RootState } from "../features/store";
 import ProtectedRoute from "../components/Protected";
+import Movies from "../pages/Movies";
+import Profile from "../pages/Profile";
 
 interface ApprouteProps {}
 
@@ -39,6 +41,14 @@ const Approute: FC<ApprouteProps> = ({}): React.ReactElement | null => {
     {
       path: "/dashboard",
       element: <Dashboard />,
+    },
+    {
+      path: "/movies",
+      element: <Movies />,
+    },
+    {
+      path: "/profile",
+      element: <Profile />,
     },
   ]);
   return routes;

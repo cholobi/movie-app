@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import { useGetPopularMoviesQuery } from "../features/services/movieApi";
 import Card from "./cards/Card";
+import { Link, NavLink } from "react-router-dom";
 
 interface PopularsProps {}
 
@@ -10,9 +11,7 @@ const Populars: FC<PopularsProps> = ({}) => {
     <div className='container mx-auto mt-4'>
       <div className=' flex items-center justify-between px-2'>
         <h1 className='text-2xl font-bold'>Popular Streams</h1>
-        <a href='#' className='text-sm text-zinc-200 hover:text-zinc-50'>
-          Browse all
-        </a>
+        {/* <a  href="/movies">Browse all</a> */}
       </div>
       {isLoading ? (
         <div className='grid grid-cols-5 animate-pulse mt-6'>

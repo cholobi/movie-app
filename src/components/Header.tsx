@@ -105,6 +105,14 @@ const Header: FC<HeaderProps> = ({ isLoadingUser }) => {
               </Link>
             </ul>
           )}
+          <ul>
+            <Link
+              to='/movies'
+              className={` text-zinc-300 px-2 py-1  flex items-center rounded-lg hover:text-white transition-colors hover:underline`}
+            >
+              Movies
+            </Link>
+          </ul>
         </div>
         <div className='flex items-center justify-center gap-4'>
           {search ? null : (
@@ -153,7 +161,14 @@ const Header: FC<HeaderProps> = ({ isLoadingUser }) => {
           {isLoading && !isAuthenticated ? (
             <Spinner />
           ) : (
-            <p className='text-sm uppercase'>{user?.username}</p>
+            <>
+              <p className='text-sm uppercase'>{user?.username}</p>
+            </>
+          )}
+          {isAuthenticated && (
+            <Link to={"/profile"} className='text-sm uppercase'>
+              Profile
+            </Link>
           )}
         </div>
       </div>
