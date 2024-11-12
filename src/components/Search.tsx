@@ -1,86 +1,174 @@
-import type { FC } from "react";
-import { genres } from "../pages/Data";
+import { useEffect, useState, type FC } from "react";
+import { genres, rating, sortOptions, year } from "../pages/Data";
+import { useFormik } from "formik";
+import { useGetFilterMoviesQuery } from "../features/services/movieApi";
+import Spinner from "./Spinner";
+import { useDispatch } from "react-redux";
+import { getFiteredMovies } from "../features/slices/movieSlice";
 
 interface SearchProps {}
 
 const Search: FC<SearchProps> = ({}) => {
-  const filter = () => {
-    console.log("filter data");
-  };
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    filter();
-    console.log(e.target.value);
-  };
+  const [formValues, setFormValues] = useState({
+    query: "",
+    maxRating: 7,
+    sortBy: "release_date.asc",
+    page: 1,
+    startYear: 2000,
+    endYear: 2024,
+    genre: "",
+  });
+
+  const { isLoading, data } = useGetFilterMoviesQuery(formValues);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getFiteredMovies(data));
+  }, [data]);
+
+  const formik = useFormik({
+    initialValues: {
+      movie_name: "",
+      genres: "",
+      rating: "",
+      year: "",
+      sort_by: "",
+    },
+
+    onSubmit: (value) => {
+      const dataValues = {
+        query: value.movie_name,
+        genres: value.genres,
+        maxRating: value.rating,
+        sortBy: value.sort_by,
+        page: 1,
+        startYear: value.year.slice(0, 4),
+        endYear: value.year.slice(5, 9),
+      };
+      setFormValues(dataValues);
+    },
+  });
+
   return (
-    <div className='container mx-auto'>
+    <form className='container mx-auto' onSubmit={formik.handleSubmit}>
       <div className=' p-2 flex flex-col items-center gap-2'>
-        <div className=''>
-          <input
-            type='text'
-            id='first_name'
-            className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5  outline-none ring-0'
-            placeholder='Enter a keyword'
-            required
-          />
+        <div className='flex gap-4'>
+          <div>
+            <input
+              name='movie_name'
+              type='text'
+              value={formik.values.movie_name}
+              onChange={formik.handleChange}
+              id='movie_name'
+              className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5  outline-none ring-0'
+              placeholder='Enter a keyword'
+              required
+            />
+          </div>
+          {isLoading ? (
+            <Spinner />
+          ) : (
+            <button
+              className='bg-green-400 px-6 rounded-lg active:scale-95 '
+              type='submit'
+            >
+              Search
+            </button>
+          )}
         </div>
         <div className=' p-2 flex gap-2'>
           <div>
             <label
               htmlFor='countries'
-              className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+              className='block mb-2 text-sm font-medium text-white'
             >
               Genres
             </label>
             <select
-              id='countries'
+              id='genres'
+              name='genres'
+              onChange={formik.handleChange}
+              value={
+                formik.values.genres.length == 0 ? "All" : formik.values.genres
+              }
               className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
             >
-              <option selected>Choose a country</option>
-              <option value='US'>United States</option>
-              <option value='CA'>Canada</option>
-              <option value='FR'>France</option>
-              <option value='DE'>Germany</option>
+              <option selected value=''>All</option>
+              {genres.map((item) => (
+                <option value={item.id} key={item.id}>
+                  {item.name}
+                </option>
+              ))}
             </select>
           </div>
           <div>
             <label
               htmlFor='countries'
-              className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+              className='block mb-2 text-sm font-medium text-white'
             >
               Rating
             </label>
             <select
-              id='countries'
+              id='rating'
+              name='rating'
+              value={formik.values.rating}
+              onChange={formik.handleChange}
               className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
             >
-              <option selected>Choose a country</option>
-              <option value='US'>United States</option>
-              <option value='CA'>Canada</option>
-              <option value='FR'>France</option>
-              <option value='DE'>Germany</option>
+              <option selected value='All'>
+                All
+              </option>
+              {rating.map((item) => (
+                <option value={item.id}>{item.rate}</option>
+              ))}
             </select>
           </div>
           <div>
             <label
               htmlFor='countries'
-              className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+              className='block mb-2 text-sm font-medium text-white'
             >
-              Year of release
+              Year
             </label>
             <select
-              id='countries'
+              id='year'
+              name='year'
+              onChange={formik.handleChange}
+              value={formik.values.year}
               className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
             >
-              <option selected>Choose a country</option>
-              <option value='US'>United States</option>
-              <option value='CA'>Canada</option>
-              <option value='FR'>France</option>
-              <option value='DE'>Germany</option>
+              <option selected value={"All"}>
+                All
+              </option>
+              {year.map((item) => (
+                <option value={item.year}>{item.year}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label
+              htmlFor='countries'
+              className='block mb-2 text-sm font-medium text-white'
+            >
+              Sort by
+            </label>
+            <select
+              id='sort_by'
+              name='sort_by'
+              value={formik.values.sort_by}
+              onChange={formik.handleChange}
+              className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+            >
+              <option selected value={"release_date.asc"}>
+                Release date
+              </option>
+              {sortOptions.map((item) => (
+                <option value={item.value}>{item.label}</option>
+              ))}
             </select>
           </div>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 export default Search;
