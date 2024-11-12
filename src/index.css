@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+.material-symbols-rounded {
+  @apply w-[1em] h-[1em] overflow-hidden;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+body {
+  @apply bg-zinc-900 text-zinc-50 h-[200vh];
+}
+
+.img-box {
+  @apply bg-zinc-700 overflow-hidden;
+}
+
+.img-cover {
+  @apply w-full h-full object-cover;
+}
+
+.btn {
+  @apply ring-1 ring-inset px-4 py-2 rounded-lg active:scale-95 transition-all active:ring-0;
+}
+
+.btn-success {
+  @apply bg-green-600;
+}
+
+.input {
+  @apply px-2 py-2 rounded-lg bg-zinc-500 border-none outline-none text-sm focus:ring-sky-400 ring-inset ring-transparent focus:ring-2 ring-1 hover:ring-zinc-50/5 transition-all;
+}
+
+.input::placeholder {
+  @apply text-zinc-400;
+}
+.navbar {
+  @apply flex container  mx-auto justify-between items-center top-0  transition-[opacity,transform,filter] w-full;
+}
+
+
+.input-container{
+  @apply flex flex-col mb-4;
+}
+/* .container {
+  @apply px-4 mx-auto lg:px-8 xl:max-w-6xl;
+} */
