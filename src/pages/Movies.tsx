@@ -1,30 +1,32 @@
-import { useEffect, type FC } from "react";
+import { useEffect, useState, type FC } from "react";
 import Header from "../components/Header";
 import Card from "../components/cards/Card";
-import {
-  useGetAllMoviesQuery,
-  useGetFilterMoviesQuery,
-  useLazyGetFilterMoviesQuery,
-} from "../features/services/movieApi";
+import { useGetAllMoviesQuery } from "../features/services/movieApi";
 import Search from "../components/Search";
 import { useDispatch, useSelector } from "react-redux";
 import { useLazyGetUserQuery } from "../features/services/authApi";
 import { loginAction } from "../features/slices/auth";
 import { RootState } from "../features/store";
+import Pagination from "../components/Pagination";
 interface MoviesProps {}
 
 const Movies: FC<MoviesProps> = ({}) => {
+  const [page, setPage] = useState(1);
+  const response = useGetAllMoviesQuery(page);
+  
+
+  const { movie } = useSelector((state: RootState) => state.movie);
+  const handleNext = () =>
+    setPage((prev) => Math.min(prev + 1, response?.data.total_pages));
+  const handlePrevious = () => setPage((prev) => Math.max(prev - 1, 1));
   const dispatch = useDispatch();
   const [getUser, { data, isLoading }] = useLazyGetUserQuery();
-  const { movie } = useSelector((state: RootState) => state.movie);
-
 
   useEffect(() => {
     document.title = "Home";
     dispatch(loginAction(data));
     getUser();
   }, [data]);
-  const response = useGetAllMoviesQuery();
 
   return (
     <>
@@ -58,7 +60,7 @@ const Movies: FC<MoviesProps> = ({}) => {
           ) : (
             <>
               {" "}
-              {response.data?.slice(0, 18).map((item) => (
+              {response.data?.results?.slice(0, 18).map((item) => (
                 <Card
                   poster_path={item?.poster_path}
                   imageClassName='rounded-lg'
@@ -73,6 +75,14 @@ const Movies: FC<MoviesProps> = ({}) => {
           )}
         </div>
       )}
+      <div className='mx-auto p-2 container items-center justify-end flex gap-4 my-6'>
+        <button onClick={handlePrevious} disabled={page === 1} className="pg-btn">
+          Previous
+        </button>
+        <button onClick={handleNext} disabled={page === response?.data?.total_pages} className="pg-btn">
+          Next
+        </button>
+      </div>
     </>
   );
 };

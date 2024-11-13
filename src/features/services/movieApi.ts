@@ -35,8 +35,8 @@ export const MovieApi = api.injectEndpoints({
       query: (_pageNo) =>
         `discover/movie?api_key=${
           import.meta.env.VITE_API_KEY
-        }&language=en-US&sort_by=popularity.desc&page=${1}`,
-      transformResponse: (response: MovieApiResponse) => response.results,
+        }&language=en-US&sort_by=popularity.desc&page=${_pageNo}`,
+      // transformResponse: (response: MovieApiResponse) => response.results,
       providesTags: ["movies"],
     }),
     getMovieTrailer: builder.query<Movie[], void>({

@@ -14,7 +14,7 @@ const Search: FC<SearchProps> = ({}) => {
     query: "",
     maxRating: 7,
     sortBy: "release_date.asc",
-    page: 1,
+    page: 2,
     startYear: 2000,
     endYear: 2024,
     genre: "",

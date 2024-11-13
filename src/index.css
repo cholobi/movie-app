@@ -46,6 +46,7 @@ body {
 .input-container{
   @apply flex flex-col mb-4;
 }
-/* .container {
-  @apply px-4 mx-auto lg:px-8 xl:max-w-6xl;
-} */
+
+.pg-btn{
+  @apply bg-zinc-50/15 active:scale-90 hover:ring-inset hover:ring-1 hover:ring-zinc-400 px-4 rounded-md py-2 hover:text-white;
+}
