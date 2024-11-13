@@ -1,6 +1,7 @@
 import { api } from "../api";
 
 export interface Movie {
+  key: any;
   release_date: any;
   vote_average: any;
   id: string | undefined;
@@ -38,6 +39,22 @@ export const MovieApi = api.injectEndpoints({
       transformResponse: (response: MovieApiResponse) => response.results,
       providesTags: ["movies"],
     }),
+    getMovieTrailer: builder.query<Movie[], void>({
+      query: (movie_id) =>
+        `/movie/${movie_id}/videos?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&language=en-US`,
+      transformResponse: (response: MovieApiResponse) => response.results,
+      providesTags: ["movies"],
+    }),
+    getSimilarMovies: builder.query<Movie[], void>({
+      query: (movie_id) =>
+        `/movie/${movie_id}/similar?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&language=en-US&page=1`,
+      transformResponse: (response: MovieApiResponse) => response.results,
+      providesTags: ["movies"],
+    }),
     getFilterMovies: builder.query<Movie[], void>({
       query: (arg: {
         query: string;
@@ -67,4 +84,6 @@ export const {
   useGetLatestMoviesQuery,
   useGetAllMoviesQuery,
   useGetFilterMoviesQuery,
+  useGetMovieTrailerQuery,
+  useGetSimilarMoviesQuery,
 } = MovieApi;

@@ -11,6 +11,7 @@ import { RootState } from "../features/store";
 import ProtectedRoute from "../components/Protected";
 import Movies from "../pages/Movies";
 import Profile from "../pages/Profile";
+import Trailer from "../pages/Trailer";
 
 interface ApprouteProps {}
 
@@ -45,6 +46,10 @@ const Approute: FC<ApprouteProps> = ({}): React.ReactElement | null => {
     {
       path: "/movies",
       element: <Movies />,
+    },
+    {
+      path: "/trailer/:id",
+      element: <Trailer />,
     },
   ]);
   return routes;

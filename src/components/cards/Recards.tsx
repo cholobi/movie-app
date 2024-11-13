@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { addToWatchlist } from "../../features/actions/addWatchList";
 import { useSelector } from "react-redux";
 import { RootState } from "../../features/store";
+import { useGetMovieTrailerQuery } from "../../features/services/movieApi";
 
 interface RecardsProps {
   poster_path: string;
@@ -23,7 +24,8 @@ const Recards: FC<RecardsProps> = ({
   isauthenticated,
   id,
 }) => {
-  const [getRequestToken, { data, isLoading, isSuccess }] = useLazyGetRequestTokenQuery();
+  const [getRequestToken, { data, isLoading, isSuccess, isError, error }] =
+    useLazyGetRequestTokenQuery();
   const { user, token } = useSelector((state: RootState) => state?.auth);
 
   const handleAddToWatchList = () => {
@@ -33,6 +35,9 @@ const Recards: FC<RecardsProps> = ({
   if (isSuccess) {
     window.location.href = `https://www.themoviedb.org/authenticate/${data?.request_token}?redirect_to=http://localhost:5173/callback`;
   }
+
+  const res = useGetMovieTrailerQuery(id);
+
   const handleClick = async () => {
     await getRequestToken();
   };
@@ -47,7 +52,7 @@ const Recards: FC<RecardsProps> = ({
             {!overview ? "No overview" : overview?.slice(0, 115) + "..."}
           </p>
         </div>
-        <figure className='img-cover'>
+        <Link to={`/details/${id}`} className='img-cover'>
           <img
             src={`https://image.tmdb.org/t/p/w500${poster_path}`}
             alt='thor'
@@ -55,13 +60,24 @@ const Recards: FC<RecardsProps> = ({
             width={100}
             height={100}
           />
-        </figure>
+        </Link>
       </div>
       <div className='flex p-2 m-3 justify-between'>
-        <button className='btn ring-0 text-sm  text-white bg-zinc-800 flex items-center gap-2'>
-          Watch Trailer
-          <span className='material-symbols-rounded'>play_circle</span>
-        </button>
+
+        {res.isLoading ? (
+          <div className="bg-slate-200 w-24 h-6 rounded-sm p-2"></div>
+        ) : (
+          <a
+            key={id}
+            href={`https://www.youtube.com/watch?v=${res?.data[0]?.key}`}
+            target='_blank'
+            rel='noopener noreferrer'
+            className='btn ring-0 text-sm  text-white bg-zinc-800 flex items-center gap-2'
+          >
+            Watch Trailer
+            <span className='material-symbols-rounded'>play_circle</span>
+          </a>
+        )}
 
         {isLoading ? (
           <Spinner />
@@ -76,7 +92,10 @@ const Recards: FC<RecardsProps> = ({
                 <span className='material-symbols-rounded'>bookmark</span>
               </button>
             ) : (
-              <button className='btn text-sm flex items-center gap-2' onClick={()=>handleClick()}>
+              <button
+                className='btn text-sm flex items-center gap-2'
+                onClick={() => handleClick()}
+              >
                 Add Watchlist
                 <span className='material-symbols-rounded'>bookmark</span>
               </button>
