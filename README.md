@@ -38,7 +38,7 @@ git clone https://github.com/cholobi/movie-app.git
 
 # Add your TMDB API key to the .env file:
 
-REACT_APP_API_KEY=your_tmdb_api_key
+VITE_APP_API_KEY=your_tmdb_api_key
 
 # Navigate into the project directory
 cd movie-app
