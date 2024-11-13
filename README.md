@@ -34,6 +34,9 @@ movie streamer is your ultimate companion for exploring the world of movies. Dis
 # Clone the repository
 git clone https://github.com/cholobi/movie-app.git
 
+# Create a .env file in the root directory.
+# Add your TMDB API key to the .env file:
+REACT_APP_API_KEY=your_tmdb_api_key
 # Navigate into the project directory
 cd movie-app
 
