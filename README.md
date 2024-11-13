@@ -24,7 +24,8 @@ movie streamer is your ultimate companion for exploring the world of movies. Dis
 * Responsive Design: Enjoy a seamless experience on both desktop and mobile, thanks to a fully responsive design.
 
 ## Getting Started
-Provide a quick introduction on how to get the application up and running.
+* git clone https://github.com/cholobi/movie-app.git
+* cd movie-app
 
 ## Installation
 Describe how to set up the project. For example:
