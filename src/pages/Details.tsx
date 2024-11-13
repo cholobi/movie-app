@@ -10,7 +10,9 @@ import { RootState } from "../features/store";
 interface DetailsProps {}
 
 const Details: FC<DetailsProps> = ({}) => {
-  const { user, token } = useSelector((state: RootState) => state?.auth);
+  const { user, token, isAuthenticated } = useSelector(
+    (state: RootState) => state?.auth
+  );
   const { id } = useParams<{ id: string }>();
 
   const { data, isLoading } = useGetMovieDetailQuery(id);
@@ -19,7 +21,7 @@ const Details: FC<DetailsProps> = ({}) => {
   };
 
   return (
-    <div className="">
+    <div className=''>
       <Header />
       <div className=' container mx-auto grid grid-cols-[2fr_3fr_4fr] top-4 relative'>
         {isLoading ? (
@@ -34,12 +36,14 @@ const Details: FC<DetailsProps> = ({}) => {
               imageClassName='img-cover rounded-lg hover:scale-95 transition-all'
               figClass='w-52 h-42'
             />
-            <button
-              className='bg-green-400 px-14 rounded-lg active:scale-95 active:text-white transition-transform py-3 mt-2'
-              onClick={() => handleAddToWatchList()}
-            >
-              Add Watchlist
-            </button>
+            {isAuthenticated && (
+              <button
+                className='bg-green-400 px-14 rounded-lg active:scale-95 active:text-white transition-transform py-3 mt-2'
+                onClick={() => handleAddToWatchList()}
+              >
+                Add Watchlist
+              </button>
+            )}
           </div>
         )}
 

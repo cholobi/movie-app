@@ -46,10 +46,6 @@ const Approute: FC<ApprouteProps> = ({}): React.ReactElement | null => {
       path: "/movies",
       element: <Movies />,
     },
-    {
-      path: "/profile",
-      element: <Profile />,
-    },
   ]);
   return routes;
 };

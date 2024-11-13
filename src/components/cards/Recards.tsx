@@ -23,17 +23,19 @@ const Recards: FC<RecardsProps> = ({
   isauthenticated,
   id,
 }) => {
-  const [, { data, isLoading, isSuccess }] = useLazyGetRequestTokenQuery();
-  const { user, token } = useSelector((state:RootState) => state?.auth);
-
+  const [getRequestToken, { data, isLoading, isSuccess }] = useLazyGetRequestTokenQuery();
+  const { user, token } = useSelector((state: RootState) => state?.auth);
 
   const handleAddToWatchList = () => {
-    addToWatchlist(user?.id, token, id,title);
+    addToWatchlist(user?.id, token, id, title);
   };
 
   if (isSuccess) {
     window.location.href = `https://www.themoviedb.org/authenticate/${data?.request_token}?redirect_to=http://localhost:5173/callback`;
   }
+  const handleClick = async () => {
+    await getRequestToken();
+  };
 
   return (
     <div className='flex flex-col  ring-inset ring-1 rounded-lg relative'>
@@ -74,10 +76,10 @@ const Recards: FC<RecardsProps> = ({
                 <span className='material-symbols-rounded'>bookmark</span>
               </button>
             ) : (
-              <Link to='/login' className='btn text-sm flex items-center gap-2'>
+              <button className='btn text-sm flex items-center gap-2' onClick={()=>handleClick()}>
                 Add Watchlist
                 <span className='material-symbols-rounded'>bookmark</span>
-              </Link>
+              </button>
             )}
           </>
         )}

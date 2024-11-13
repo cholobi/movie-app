@@ -115,26 +115,13 @@ const Header: FC<HeaderProps> = ({ isLoadingUser }) => {
           </ul>
         </div>
         <div className='flex items-center justify-center gap-4'>
-          {search ? null : (
-            <span
-              className='material-symbols-rounded'
-              onClick={() => setSearch((prev) => !prev)}
-            >
-              search
-            </span>
+
+
+          {!isAuthenticated && (
+            <button type='button' className='btn'>
+              Sign up
+            </button>
           )}
-          {search && (
-            <input
-              type='text'
-              name='search'
-              id='search'
-              placeholder='search...'
-              className='input'
-            />
-          )}
-          <button type='button' className='btn'>
-            Sign up
-          </button>
           {isAuthenticated ? (
             <button
               type='button'
@@ -164,11 +151,6 @@ const Header: FC<HeaderProps> = ({ isLoadingUser }) => {
             <>
               <p className='text-sm uppercase'>{user?.username}</p>
             </>
-          )}
-          {isAuthenticated && (
-            <Link to={"/profile"} className='text-sm uppercase'>
-              Profile
-            </Link>
           )}
         </div>
       </div>

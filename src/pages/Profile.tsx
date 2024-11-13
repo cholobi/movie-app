@@ -2,7 +2,10 @@ import { useEffect, type FC } from "react";
 import Header from "../components/Header";
 import { loginAction } from "../features/slices/auth";
 import { useDispatch, useSelector } from "react-redux";
-import { useLazyGetUserQuery } from "../features/services/authApi";
+import {
+  useGetUserQuery,
+  useLazyGetUserQuery,
+} from "../features/services/authApi";
 import { RootState } from "../features/store";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
@@ -10,6 +13,7 @@ import { useFormik } from "formik";
 interface ProfileProps {}
 
 const Profile: FC<ProfileProps> = ({}) => {
+  
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -34,6 +38,8 @@ const Profile: FC<ProfileProps> = ({}) => {
       navigate("/");
     }
   }, [data, isAuthenticated, dispatch, navigate]);
+
+  
   return (
     <>
       <Header />
