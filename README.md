@@ -57,5 +57,9 @@ Movie Streamer is your ultimate companion for exploring the world of movies. Dis
 ## API Documentation
 - **TMDB API**:Used to fetch movie data.
 - **Get Movies:**:https://api.themoviedb.org/3/discover/movie?api_key=YOUR_API_KEY
+
+## Known Issues
+- **Unable to Load Assets in Header Component:** Some assets might not be loading correctly in the header component. This may require checking the asset paths or the way assets are imported into the component.
+- **React Router DOM Version Bugs:** Th
 - **Search Movies**: https://api.themoviedb.org/3/search/movie?api_key=YOUR_API_KEY&query=QUERY
 
