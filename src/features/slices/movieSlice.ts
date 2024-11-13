@@ -7,7 +7,6 @@ import { createSlice } from "@reduxjs/toolkit";
   reducers: {
     getFiteredMovies(state, action) {
       state.movie = action.payload;
-      console.log(action.payload);
     },
   },
 });

@@ -6,14 +6,13 @@ import Search from "../components/Search";
 import { useDispatch, useSelector } from "react-redux";
 import { useLazyGetUserQuery } from "../features/services/authApi";
 import { loginAction } from "../features/slices/auth";
-import { RootState } from "../features/store";
-import Pagination from "../components/Pagination";
-interface MoviesProps {}
 
-const Movies: FC<MoviesProps> = ({}) => {
+interface MoviesProps { }
+
+const Movies: FC<MoviesProps> = ({ }) => {
   const [page, setPage] = useState(1);
   const response = useGetAllMoviesQuery(page);
-  
+
 
   const { movie } = useSelector((state: RootState) => state.movie);
   const handleNext = () =>
@@ -45,7 +44,7 @@ const Movies: FC<MoviesProps> = ({}) => {
           {movie?.length > 0 ? (
             <>
               {" "}
-              {movie?.slice(0, 18).map((item) => (
+              {movie?.slice(0, 20).map((item) => (
                 <Card
                   poster_path={item?.poster_path}
                   imageClassName='rounded-lg'

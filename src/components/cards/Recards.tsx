@@ -2,11 +2,10 @@ import type { FC } from "react";
 import Spinner from "../Spinner";
 
 import { useLazyGetRequestTokenQuery } from "../../features/services/authApi";
-import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { addToWatchlist } from "../../features/actions/addWatchList";
 import { useSelector } from "react-redux";
-import { RootState } from "../../features/store";
+import { RootState } from "../../types/authTypes";
 import { useGetMovieTrailerQuery } from "../../features/services/movieApi";
 
 interface RecardsProps {
@@ -24,7 +23,7 @@ const Recards: FC<RecardsProps> = ({
   isauthenticated,
   id,
 }) => {
-  const [getRequestToken, { data, isLoading, isSuccess, isError, error }] =
+  const [getRequestToken, { data, isLoading, isSuccess }] =
     useLazyGetRequestTokenQuery();
   const { user, token } = useSelector((state: RootState) => state?.auth);
 
