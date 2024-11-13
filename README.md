@@ -15,7 +15,13 @@ movie streamer is your ultimate companion for exploring the world of movies. Dis
 - [Acknowledgements](#acknowledgements)
 
 ## Features
-List key features of your application. Bullet points are helpful here.
+Browsing Movies: Effortlessly explore a vast collection of movies, complete with detailed information on each title.
+Watching Trailers: Watch trailers to get a sneak peek before diving into a full movie experience.
+Filtering Options: Narrow down your search by applying filters such as genre, rating, release year, and more, to find the perfect movie match.
+Search Functionality: Quickly find specific movies by entering keywords or titles, with real-time search suggestions.
+User Authorization: Secure login and logout functionality to personalize the user experience, with protected routes for added security.
+Personalized Watchlist: Users can add favorite movies to a watchlist, making it easy to save titles to view later.
+Responsive Design: Enjoy a seamless experience on both desktop and mobile, thanks to a fully responsive design.
 
 ## Getting Started
 Provide a quick introduction on how to get the application up and running.
