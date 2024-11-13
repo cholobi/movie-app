@@ -55,13 +55,18 @@ const Dashboard: FC<DashboardProps> = ({}) => {
         <div className='flex justify-between gap-4'>
           <div className='px-1'>
             <div className='flex justify-between'>
-              <h1 className='text-lg font-bold'>Recommended</h1>
-              <a
-                href='#'
-                className='text-sm text-zinc-50/30 transition-colors hover:text-white'
-              >
-                View more
-              </a>
+              {
+                <>
+                  recMovies &&{" "}
+                  <h1 className='text-lg font-bold'>Recommended</h1>
+                  <a
+                    href='#'
+                    className='text-sm text-zinc-50/30 transition-colors hover:text-white'
+                  >
+                    View more
+                  </a>
+                </>
+              }
             </div>
             {response.isLoading ? (
               <div className='grid grid-cols-4 animate-pulse mt-6 gap-4'>
@@ -87,19 +92,25 @@ const Dashboard: FC<DashboardProps> = ({}) => {
           </div>
           <div className=' px-2'>
             <div className='flex justify-between'>
-              {response.isLoading ? (
-                <Spinner />
-              ) : (
-                <h1 className='text-lg font-bold mb-2'>
-                  My watchlist ({response.data?.length})
-                </h1>
+              {response.data && (
+                <>
+                  {response.isLoading ? (
+                    <Spinner />
+                  ) : (
+                    <h1 className='text-lg font-bold mb-2'>
+                      My watchlist ({response.data?.length})
+                    </h1>
+                  )}
+                </>
               )}
-              <a
-                href='#'
-                className='text-sm mb-2 text-zinc-400 hover:text-white'
-              >
-                View more
-              </a>
+              {response.data && (
+                <a
+                  href='#'
+                  className='text-sm mb-2 text-zinc-400 hover:text-white'
+                >
+                  View more
+                </a>
+              )}
             </div>
             {response.isLoading ? (
               <div className='grid grid-cols-4 animate-pulse mt-6 gap-4'>
