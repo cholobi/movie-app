@@ -4,7 +4,7 @@ movie streamer is your ultimate companion for exploring the world of movies. Dis
 
 
 ## Table of Contents
-- [Features](#features)
+* [Features](#features)
 - [Getting Started](#getting-started)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -16,7 +16,7 @@ movie streamer is your ultimate companion for exploring the world of movies. Dis
 
 ## Features
 * Browsing Movies: Effortlessly explore a vast collection of movies, complete with detailed information on each title.
-*Watching Trailers: Watch trailers to get a sneak peek before diving into a full movie experience.
+* Watching Trailers: Watch trailers to get a sneak peek before diving into a full movie experience.
 *Filtering Options: Narrow down your search by applying filters such as genre, rating, release year, and more, to find the perfect movie match.
 *Search Functionality: Quickly find specific movies by entering keywords or titles, with real-time search suggestions.
 *User Authorization: Secure login and logout functionality to personalize the user experience, with protected routes for added security.
