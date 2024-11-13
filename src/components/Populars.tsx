@@ -10,7 +10,7 @@ const Populars: FC<PopularsProps> = ({}) => {
   return (
     <div className='container mx-auto mt-4'>
       <div className=' flex items-center justify-between px-2'>
-        <h1 className='text-2xl font-bold'>Popular Streams</h1>
+        {data && <h1 className='text-2xl font-bold'>Popular Streams</h1>}
         {/* <a  href="/movies">Browse all</a> */}
       </div>
       {isLoading ? (

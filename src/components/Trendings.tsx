@@ -9,10 +9,14 @@ const Trendings: FC<TrendingsProps> = ({}) => {
   return (
     <div className='container mx-auto mb-4'>
       <div className=' flex items-center justify-between px-2'>
-        <h1 className='text-2xl font-bold'>Trendings</h1>
-        <a href='#' className='text-sm text-zinc-200 hover:text-zinc-50'>
-          Browse all
-        </a>
+        {data && (
+          <>
+            <h1 className='text-2xl font-bold'>Trendings</h1>
+            <a href='#' className='text-sm text-zinc-200 hover:text-zinc-50'>
+              Browse all
+            </a>
+          </>
+        )}
       </div>
       {isLoading ? (
         <div className='grid grid-cols-5 animate-pulse mt-6'>
@@ -23,8 +27,8 @@ const Trendings: FC<TrendingsProps> = ({}) => {
       ) : (
         <div className='grid lg:grid-cols-6 grid-cols-2 md:grid-cols-4 gap-3 rounded-lg'>
           {data?.slice(0, 6)?.map((item: any) => (
-              <Card
-                  imageClassName="img-cover rounded-lg hover:scale-95 transition-all"
+            <Card
+              imageClassName='img-cover rounded-lg hover:scale-95 transition-all'
               id={item?.id}
               poster_path={item?.poster_path}
               title={item?.title}

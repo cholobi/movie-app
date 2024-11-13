@@ -5,6 +5,7 @@ import { useGetFilterMoviesQuery } from "../features/services/movieApi";
 import Spinner from "./Spinner";
 import { useDispatch } from "react-redux";
 import { getFiteredMovies } from "../features/slices/movieSlice";
+import { toast } from "react-toastify";
 
 interface SearchProps {}
 
@@ -92,7 +93,9 @@ const Search: FC<SearchProps> = ({}) => {
               }
               className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
             >
-              <option selected value=''>All</option>
+              <option selected value=''>
+                All
+              </option>
               {genres.map((item) => (
                 <option value={item.id} key={item.id}>
                   {item.name}
