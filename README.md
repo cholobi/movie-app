@@ -6,7 +6,6 @@ Movie Streamer is your ultimate companion for exploring the world of movies. Dis
 - [Getting Started](#getting-started)
 - [Installation](#installation)
 - [Libraries Used](#libraries-used)
-- [Configuration](#configuration)
 - [API Documentation](#api-documentation)
 - [Contributing](#contributing)
 - [License](#license)
