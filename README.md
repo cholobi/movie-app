@@ -49,7 +49,7 @@ npm install
 # run app
 npm start
 
-##libaries used
+## libaries used
 * Redux: For global state management.
 * Redux Toolkit: Simplifies Redux usage with tools for state management.
 * React Router DOM: For routing and navigation between pages.
