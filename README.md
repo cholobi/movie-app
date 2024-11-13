@@ -32,3 +32,9 @@ Movie Streamer is your ultimate companion for exploring the world of movies. Dis
 - **React toastify**: A library for displaying toast notifications in React apps. React Toastify makes it easy to show brief, non-blocking messages (e.g., success, error, info) to users. It provides customization options such as auto-hide duration, positioning, and transition effects.
 - **Tailwind Css**: A utility-first CSS framework for rapidly building custom designs without writing custom CSS. With Tailwind CSS, developers can apply predefined classes directly to HTML elements, making it faster to create responsive layouts and clean designs. It is used for styling the app, offering flexibility and control over the look and feel of the application.
 
+
+## API Documentation
+- **TMDB API**:Used to fetch movie data.
+- **Get Movies:**:https://api.themoviedb.org/3/discover/movie?api_key=YOUR_API_KEY
+- **Search Movies**: https://api.themoviedb.org/3/search/movie?api_key=YOUR_API_KEY&query=QUERY
+
