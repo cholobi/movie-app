@@ -31,7 +31,7 @@ Movie Streamer is your ultimate companion for exploring the world of movies. Dis
    cd movie-app
 
 3.Create a .env file in the root directory.
-    ```bash
+
 
 4.Add your TMDB API key to the .env file:
     ```bash
