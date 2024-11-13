@@ -22,25 +22,20 @@ Movie Streamer is your ultimate companion for exploring the world of movies. Dis
 
 ## Getting Started
 1. Clone the repository:
-   ```bash
    git clone https://github.com/cholobi/movie-app.git
    
 2.Navigate into the project directory:
-   ```bash
    cd movie-app
 
 3.Create a .env file in the root directory.
 
 4.Add your TMDB API key to the .env file:
-   ```bash
    VITE_APP_API_KEY=your_tmdb_api_key
 
 5.Install dependencies:
-   ```bash
    npm install
 
 6.Run the app:
-   ```bash
    npm start
 
 
