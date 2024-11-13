@@ -7,7 +7,7 @@ movie streamer is your ultimate companion for exploring the world of movies. Dis
 * [Features](#features)
 - [Getting Started](#getting-started)
 - [Installation](#installation)
-- [Libraries used](#libaries used)
+- [Libraries used](#libaries-used)
 - [Configuration](#configuration)
 - [API Documentation](#api-documentation)
 - [Contributing](#contributing)
