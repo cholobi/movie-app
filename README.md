@@ -25,3 +25,11 @@ Movie Streamer is your ultimate companion for exploring the world of movies. Dis
 1. Clone the repository:
    ```bash
    git clone https://github.com/cholobi/movie-app.git
+
+## Libraries Used
+- **Redux**: A predictable state container for JavaScript apps. Redux is used for managing global application state, allowing the app to maintain a consistent state and enable easy updates to UI components based on user interactions. It helps manage and centralize the state of the app in a single store.
+- **Redux Toolkit**: A set of tools and best practices designed to simplify Redux development. It provides utilities to reduce boilerplate, such as createSlice for defining reducers and actions, and createAsyncThunk for handling async logic. Redux Toolkit is designed to make working with Redux easier, faster, and less error-prone.
+- **React Router Dom**: A library for routing and navigation in React apps. React Router allows users to navigate among different views in the app, maintain the browser's history stack, and update the URL accordingly. It provides a declarative way to define routes in a React app and supports features like nested routing and route protection.
+- **React toastify**: A library for displaying toast notifications in React apps. React Toastify makes it easy to show brief, non-blocking messages (e.g., success, error, info) to users. It provides customization options such as auto-hide duration, positioning, and transition effects.
+- **Tailwind Css**: A utility-first CSS framework for rapidly building custom designs without writing custom CSS. With Tailwind CSS, developers can apply predefined classes directly to HTML elements, making it faster to create responsive layouts and clean designs. It is used for styling the app, offering flexibility and control over the look and feel of the application.
+
