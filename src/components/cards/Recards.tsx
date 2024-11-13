@@ -47,7 +47,7 @@ const Recards: FC<RecardsProps> = ({
       <div className='flex gap-2 p-4'>
         <div className='flex flex-col'>
           <h1 className='text-white font-bold text-xl'>{title}</h1>
-          {/* <p className='text-zinc-500 text-sm'>2h40m.2022.Fantansy.Action</p> */}
+
           <p className='text-sm w-60  p-2 h-24'>
             {!overview ? "No overview" : overview?.slice(0, 115) + "..."}
           </p>
@@ -65,7 +65,7 @@ const Recards: FC<RecardsProps> = ({
       <div className='flex p-2 m-3 justify-between'>
 
         {res.isLoading ? (
-          <div className="bg-slate-200 w-24 h-6 rounded-sm p-2"></div>
+          <div className="bg-slate-200 w-24 h-6 rounded-lg p-2"></div>
         ) : (
           <a
             key={id}

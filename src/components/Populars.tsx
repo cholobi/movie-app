@@ -11,8 +11,9 @@ const Populars: FC<PopularsProps> = ({}) => {
     <div className='container mx-auto mt-4'>
       <div className=' flex items-center justify-between px-2'>
         {data && <h1 className='text-2xl font-bold'>Popular Streams</h1>}
-        {/* <a  href="/movies">Browse all</a> */}
+        <Link to={"/movies"} className="relative text-sm text-zinc-400 hover:text-white">Browse all</Link>
       </div>
+
       {isLoading ? (
         <div className='grid grid-cols-5 animate-pulse mt-6'>
           {[1, 2, 3, 4, 5].map(() => (

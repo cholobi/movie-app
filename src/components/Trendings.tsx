@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import Card from "./cards/Card";
 import { useGetTrendingMoviesQuery } from "../features/services/movieApi";
+import { Link } from "react-router-dom";
 interface TrendingsProps {}
 
 const Trendings: FC<TrendingsProps> = ({}) => {
@@ -12,9 +13,12 @@ const Trendings: FC<TrendingsProps> = ({}) => {
         {data && (
           <>
             <h1 className='text-2xl font-bold'>Trendings</h1>
-            <a href='#' className='text-sm text-zinc-200 hover:text-zinc-50'>
+            <Link
+              to='/movies'
+              className='text-sm text-zinc-300 hover:text-zinc-50'
+            >
               Browse all
-            </a>
+            </Link>
           </>
         )}
       </div>
