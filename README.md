@@ -49,4 +49,11 @@ npm install
 # run app
 npm start
 
+##libaries used
+* Redux: For global state management.
+* Redux Toolkit: Simplifies Redux usage with tools for state management.
+* React Router DOM: For routing and navigation between pages.
+* React Toastify: To display toast notifications for various actions.
+* Tailwind CSS: For responsive and utility-first styling.
+
 
