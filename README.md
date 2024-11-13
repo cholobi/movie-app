@@ -4,10 +4,10 @@ movie streamer is your ultimate companion for exploring the world of movies. Dis
 
 
 ## Table of Contents
-* [Features](#features)
+- [Features](#features)
 - [Getting Started](#getting-started)
 - [Installation](#installation)
-- [Libraries used](#libraries-used)
+- [Libraries Used](#libraries-used)
 - [Configuration](#configuration)
 - [API Documentation](#api-documentation)
 - [Contributing](#contributing)
@@ -49,7 +49,8 @@ npm install
 # run app
 npm start
 
-## libraries used
+## Libraries Used
+
 * Redux: For global state management.
 * Redux Toolkit: Simplifies Redux usage with tools for state management.
 * React Router DOM: For routing and navigation between pages.
