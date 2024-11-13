@@ -28,14 +28,14 @@ movie streamer is your ultimate companion for exploring the world of movies. Dis
 * cd movie-app
 
 ## Installation
-Describe how to set up the project. For example:
+
 
 ```bash
 # Clone the repository
-git clone https://github.com/username/projectname.git
+git clone https://github.com/cholobi/movie-app.git
 
 # Navigate into the project directory
-cd projectname
+cd movie-app
 
 # Install dependencies
 npm install
